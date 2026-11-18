@@ -1,6 +1,8 @@
+"use client";
+
 import { gridItems } from "@/data";
-import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
 import { motion, useReducedMotion } from "framer-motion";
+import dynamic from "next/dynamic";
 import {
   SiAmazonaws,
   SiDocker,
@@ -17,6 +19,15 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
+
+const BentoGrid = dynamic(
+  () => import("./ui/BentoGrid").then((module) => module.BentoGrid),
+  { ssr: false }
+);
+const BentoGridItem = dynamic(
+  () => import("./ui/BentoGrid").then((module) => module.BentoGridItem),
+  { ssr: false }
+);
 
 const technologies = [
   { name: "React.js", Icon: SiReact, color: "#61DAFB" },
